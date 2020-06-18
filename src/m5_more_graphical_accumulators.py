@@ -356,11 +356,17 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
 
     start = rectangle1.get_center()
     end = rectangle2.get_center()
+    center_to_lower_left_corner_x = rectangle1.get_width() / 2
+    center_to_lower_left_corner_y = rectangle1.get_height() / 2
+
     for _ in range(n):
-        line = rg.Line(rg.Point(start.x, start.y), rg.Point(end_x, end_y))
+        line = rg.Line(rg.Point(start.x, start.y), rg.Point(end.x, end.y))
         line.attach_to(window)
 
-        start_
+        start.x = start.x - center_to_lower_left_corner_x
+        start.y = start.y + center_to_lower_left_corner_y
+        end.x = end.x - center_to_lower_left_corner_x
+        end.y = end.y + center_to_lower_left_corner_y
 
     rectangle1.attach_to(window)
     rectangle2.attach_to(window)
