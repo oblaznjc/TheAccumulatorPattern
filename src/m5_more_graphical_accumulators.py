@@ -354,6 +354,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    #sets line start and end, calculates translation distance
     start = rectangle1.get_center()
     end = rectangle2.get_center()
     center_to_lower_left_corner_x = rectangle1.get_width() / 2
@@ -362,12 +363,16 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     for k in range(n):
         line = rg.Line(rg.Point(start.x, start.y), rg.Point(end.x, end.y))
         line.thickness = 5
+
+        #Alternates line color
         if k % 2 == 1:
             line.color = rectangle2.outline_color
         else:
             line.color = rectangle1.outline_color
+
         line.attach_to(window)
 
+        #Translates line a precalculated distance
         start.x = start.x - center_to_lower_left_corner_x
         start.y = start.y + center_to_lower_left_corner_y
         end.x = end.x - center_to_lower_left_corner_x
