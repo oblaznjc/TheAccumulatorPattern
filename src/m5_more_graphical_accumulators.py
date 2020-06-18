@@ -166,7 +166,8 @@ def run_test_draw_circles_from_rectangle():
     rectangle.fill_color = 'blue'
     rectangle.outline_color = 'red'
     rectangle.outline_thickness = 3
-    draw_circles_from_rectangle(3, 8, rectangle, window1)
+    draw_circles_from_rectangle(8, 3, rectangle, window1)
+
     window1.close_on_mouse_click()
 
     # ------------------------------------------------------------------
@@ -226,7 +227,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -245,6 +246,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     radius = rectangle.get_width() / 2
     for _ in range(n):
         circle = rg.Circle(rg.Point(x,y), radius)
+        circle.outline_color = rectangle.outline_color
         circle.attach_to(window)
         y = y - radius * 2
 
@@ -253,6 +255,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     radius = rectangle.get_height() / 2
     for _ in range(m):
         circle = rg.Circle(rg.Point(x,y), radius)
+        circle.fill_color = rectangle.fill_color
         circle.attach_to(window)
         x = x - radius * 2
 
@@ -349,6 +352,17 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    start = rectangle1.get_center()
+    end = rectangle2.get_center()
+    line1 = rg.Line(start, end)
+
+
+    line1.attach_to(window)
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
