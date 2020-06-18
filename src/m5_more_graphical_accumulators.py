@@ -359,8 +359,13 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     center_to_lower_left_corner_x = rectangle1.get_width() / 2
     center_to_lower_left_corner_y = rectangle1.get_height() / 2
 
-    for _ in range(n):
+    for k in range(n):
         line = rg.Line(rg.Point(start.x, start.y), rg.Point(end.x, end.y))
+        line.thickness = 5
+        if k % 2 == 1:
+            line.color = rectangle2.outline_color
+        else:
+            line.color = rectangle1.outline_color
         line.attach_to(window)
 
         start.x = start.x - center_to_lower_left_corner_x
