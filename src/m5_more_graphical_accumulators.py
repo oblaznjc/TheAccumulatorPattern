@@ -262,6 +262,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     rectangle.attach_to(window)
     window.render()
 
+
 def run_test_draw_lines_from_rectangles():
     """ Tests the   draw_lines_from_rectangles  function. """
     print()
@@ -355,10 +356,12 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
 
     start = rectangle1.get_center()
     end = rectangle2.get_center()
-    line1 = rg.Line(start, end)
+    for _ in range(n):
+        line = rg.Line(rg.Point(start.x, start.y), rg.Point(end_x, end_y))
+        line.attach_to(window)
 
+        start_
 
-    line1.attach_to(window)
     rectangle1.attach_to(window)
     rectangle2.attach_to(window)
 
