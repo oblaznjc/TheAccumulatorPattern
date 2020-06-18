@@ -240,7 +240,6 @@ def draw_row_of_circles(n, point, color, window):
 
     window.render()
 
-
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
