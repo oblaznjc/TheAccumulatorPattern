@@ -112,13 +112,14 @@ def draw_squares_from_circle(n, circle, window):
     ####################################################################
     # ------------------------------------------------------------------
 
-
+    #sets square parameters based on circle
     top_left_corner = rg.Point(circle.center.x - circle.radius, circle.center.y - circle.radius)
     for _ in range(n):
         bottom_right_corner = rg.Point(top_left_corner.x + 2 * circle.radius, top_left_corner.y + 2 * circle.radius)
         rectangle = rg.Rectangle(top_left_corner, bottom_right_corner)
         rectangle.attach_to(window)
 
+        #translates rectangle top_left_corner set distance in positive x and y
         top_left_corner.x = top_left_corner.x + circle.radius
         top_left_corner.y = top_left_corner.y + circle.radius
 
@@ -241,18 +242,24 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    #sets circle parameters based on provided rectangle
     x = (rectangle.get_center().x)
     y = (rectangle.get_center().y - rectangle.get_width() / 2 - rectangle.get_height() / 2)
     radius = rectangle.get_width() / 2
+
+    #creates a row of cirles above rectangle
     for _ in range(n):
         circle = rg.Circle(rg.Point(x,y), radius)
         circle.outline_color = rectangle.outline_color
         circle.attach_to(window)
         y = y - radius * 2
 
+    #sets circle parameters based on provided rectangle
     x = (rectangle.get_center().x - rectangle.get_width() / 2 - rectangle.get_height() / 2)
     y = (rectangle.get_center().y)
     radius = rectangle.get_height() / 2
+
+    #creates a column of circles left of rectangle
     for _ in range(m):
         circle = rg.Circle(rg.Point(x,y), radius)
         circle.fill_color = rectangle.fill_color
